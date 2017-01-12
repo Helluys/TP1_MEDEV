@@ -1,8 +1,11 @@
 /CMakeCache.txt
-/tpavion
+/bin
 /Makefile
 /cmake_install.cmake
 /compile_commands.json
 /nbproject
 /CMakeFiles
-/build/*
+/build
+/Testing/Temporary
+/Testing/bin
+/CTestTestfile.cmake
