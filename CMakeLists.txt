@@ -42,7 +42,18 @@ Testing/src/*.cpp
  )
 
 add_executable( runUnitTests ${test_source_files} )
-set_target_properties( runUnitTests PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Testing/bin" )
+set_target_properties( runUnitTests PROPERTIES 
+                            RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/Testing/bin"
+                            COMPILE_FLAGS --coverage )
 include_directories( ${CMAKE_SOURCE_DIR}/include ) # need to include the main app headers
-target_link_libraries( runUnitTests gtest gtest_main )
+target_link_libraries( runUnitTests gtest gtest_main gcov )
 add_test( runUnitTests Testing/bin/runUnitTests )
+
+################################
+# gcov - lcov
+################################
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
+if(CMAKE_COMPILER_IS_GNUCXX)
+    include(CodeCoverage)
+    setup_target_for_coverage(tpavion_coverage runUnitTests coverage)
+endif()
