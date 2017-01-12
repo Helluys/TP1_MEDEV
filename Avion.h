@@ -2,8 +2,6 @@
 #include <osg/Vec3f>
 #include <vector>
 
-#define M_PI 3.1415
-
 class Avion{
 
 protected:

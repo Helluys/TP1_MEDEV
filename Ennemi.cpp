@@ -1,6 +1,6 @@
 #include "Ennemi.h"
 #include<cmath>
-#include<osg/vec3f>
+#include<osg/Vec3f>
 
 
 Ennemi::Ennemi() : Avion()

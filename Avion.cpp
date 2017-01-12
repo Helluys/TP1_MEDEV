@@ -1,5 +1,5 @@
 #include "Avion.h"
-#include <osg/vec3f>
+#include <osg/Vec3f>
 #include <osg/Geometry>
 
 Avion::Avion(){

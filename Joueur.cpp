@@ -1,6 +1,6 @@
 #include "Joueur.h"
 #include<cmath>
-#include<osg/vec3f>
+#include<osg/Vec3f>
 #include <vector>
 #include <cstdlib>
 #include <iostream>

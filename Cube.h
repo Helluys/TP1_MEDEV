@@ -49,7 +49,7 @@ private:
 	osg::ref_ptr<osg::Node> createSubCube(int i,int j,int k);
 	osg::ref_ptr<osg::Group> createCube();
 	void afficherAvion();
-	void elimination(vector<int> ListeTouchés, vector<Avion*> &ListeAvion);
+	void elimination(vector<int> ListeTouches, vector<Avion*> &ListeAvion);
 	bool VerificationFin(std::vector<Avion*> &ListeAvion);
 public:
 	osgViewer::Viewer* getViewer() { return viewer; }

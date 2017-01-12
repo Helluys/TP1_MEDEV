@@ -2,17 +2,14 @@
 #include <iostream>
 #include <ctime>
 #include <cstdlib>
+#include <vector>
+
 #include "Avion.h"
 #include "Joueur.h"
 #include "Ennemi.h"
-#include <vector>
 #include "Cube.h"
 //#include "afficher.h"
 
-#include <iostream>
-#include <ctime>
-#include <cstdlib>
-#include <vector>
 
 using namespace std;
 /* Affichage du monde */
@@ -172,11 +169,11 @@ void Cube::afficherCube()
 	osg::ref_ptr<osg::Material> material (new osg::Material);
 
 	//Setting material 1 - capsule
-	material->setAmbient(osg::Material::Face::FRONT_AND_BACK,osg::Vec4(0,0,0.8,1));
-	material->setDiffuse(osg::Material::Face::FRONT_AND_BACK,osg::Vec4(0,0,0.8,1));
-	material->setSpecular(osg::Material::Face::FRONT_AND_BACK,osg::Vec4(0,0,0.8,1));
-	material->setEmission(osg::Material::Face::FRONT_AND_BACK,osg::Vec4(0,0,0,0));
-	material->setShininess(osg::Material::Face::FRONT_AND_BACK, 0);
+	material->setAmbient(osg::Material::FRONT_AND_BACK,osg::Vec4(0,0,0.8,1));
+	material->setDiffuse(osg::Material::FRONT_AND_BACK,osg::Vec4(0,0,0.8,1));
+	material->setSpecular(osg::Material::FRONT_AND_BACK,osg::Vec4(0,0,0.8,1));
+	material->setEmission(osg::Material::FRONT_AND_BACK,osg::Vec4(0,0,0,0));
+	material->setShininess(osg::Material::FRONT_AND_BACK, 0);
 
 	osg::ref_ptr<osg::StateSet> nodeStateSet1 ( geodePlane1->getOrCreateStateSet() );
 	osg::ref_ptr<osg::StateSet> nodeStateSet2 ( geodePlane2->getOrCreateStateSet() );
@@ -214,7 +211,7 @@ void Cube::afficherCube()
 	//Add to light source group
 	lightGroup0->addChild(lightSource0.get());
 
-	// Allumage des lumières
+	// Allumage des lumieres
 	rootStateSet->setMode(GL_LIGHT0, osg::StateAttribute::ON);
 
 
@@ -288,13 +285,13 @@ void Cube::afficherAvion() {
 	patAvionEnnemi2->setAttitude(attitude);
 }
 
-void Cube::elimination(vector<int> ListeTouchés, vector<Avion*> &ListeAvion) // Supprime les avions contenus dans le vecteur Listetouchés du vecteur principal ListeAvion à partir de leurs Id
+void Cube::elimination(vector<int> ListeTouches, vector<Avion*> &ListeAvion) // Supprime les avions contenus dans le vecteur Listetouches du vecteur principal ListeAvion e partir de leurs Id
 {
-    for (unsigned int i=0;i<ListeTouchés.size();i++) // on élimine les avions touchés
+    for (unsigned int i=0;i<ListeTouches.size();i++) // on elimine les avions touches
             {
                 for(unsigned int j= 0; j<ListeAvion.size();j++)
                 {
-                    if (ListeAvion[j]->getId() == ListeTouchés[i])
+                    if (ListeAvion[j]->getId() == ListeTouches[i])
                     {
                          ListeAvion.erase(ListeAvion.begin() + j);
                     }
@@ -323,7 +320,7 @@ void Cube::mainLoop() {
 
 		afficherAvion();
 	
-    for (unsigned int i=0;i<ListeAvion.size();i++) // Annonce les paramètres de chaque avion
+    for (unsigned int i=0;i<ListeAvion.size();i++) // Annonce les parametres de chaque avion
     {
         ListeAvion[i]->strategie(ListeAvion);
     }
@@ -336,7 +333,7 @@ void Cube::mainLoop() {
     ListeAvion[0]->DetecteCollision(n,ListeAvion);
 
     vector<int> ListeAvionsTouches ;
-    for (unsigned int i=0;i<ListeAvion.size();i++) // Chaque avion Tire et on récupère les id des avions touchés
+    for (unsigned int i=0;i<ListeAvion.size();i++) // Chaque avion Tire et on recupere les id des avions touches
     {
         int idTouche = ListeAvion[i]->tirer(n, ListeAvion);
         if (idTouche != -1 )
