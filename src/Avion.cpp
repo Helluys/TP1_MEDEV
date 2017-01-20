@@ -25,7 +25,7 @@ void Avion::tourner()
 	up=q2*osg::Vec3d(up);
 }
 
-void Avion::DetecteCollision(int cube_size, std::vector<Avion*> &avions){
+void Avion::detecteCollision(int cube_size, std::vector<Avion*> &avions){
     std::vector<int> idem;
     for (unsigned int i = 0; i<avions.size(); i++){//ici, on vérifie les murs et on compare les positions relatives (voir si deux sont ds le meme cube) 
         osg::Vec3f pos1 = avions[i]->getPosition();

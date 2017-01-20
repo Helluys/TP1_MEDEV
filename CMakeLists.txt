@@ -35,7 +35,6 @@ target_link_libraries( tpavion ${OPENSCENEGRAPH_LIBRARIES} )
 ################################
 # Unit Tests
 ################################
-
 file( GLOB
 test_source_files
 Testing/src/*.cpp

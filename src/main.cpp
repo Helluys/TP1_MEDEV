@@ -9,16 +9,12 @@
 #include "Cube.h"
 //#include "afficher.h"
 
-int main(){
-
+int main()
+{
     srand(time(NULL));
-    int cube_size = 13;
-    Cube world(cube_size);
-    while ( !world.fin )
-	{
-        world.mainLoop();
-    }
+    Cube jeu(13);
+    jeu.boucle();
 
     return 0;
-    }
+}
 

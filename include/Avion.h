@@ -44,5 +44,5 @@ public:
 	virtual void strategie(std::vector<Avion*> &v)=0;
 	~Avion();
 	
-	static void DetecteCollision(int cube_size, std::vector<Avion*> &avions); //Méthode pour détruire les avions en collision
+	static void detecteCollision(int cube_size, std::vector<Avion*> &avions); //Méthode pour détruire les avions en collision
 };
